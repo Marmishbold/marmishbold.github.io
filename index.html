@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мармишболд ХХК — Байгууллагын Гарын Бэлэг</title>
+<style>
+:root{--red:#D42B2B;--dark:#18181A;--dark-mid:#242428;--cream:#F5F5F5;--text:#1A1A1E;--muted:#777780;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#F5F5F5;font-family:Georgia,'Times New Roman',serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* COVER */
+.cover{min-height:100vh;background-color:#18181A !important;background:#18181A !important;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.cover-bg{position:absolute;inset:0;background:#18181A;}
+.cover-glow{position:absolute;width:500px;height:300px;border-radius:50%;background:rgba(212,43,43,0.08);top:40%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+.cover-corner{position:absolute;width:140px;height:140px;border:1px solid rgba(212,43,43,0.25);}
+.cover-corner.tl{top:24px;left:24px;border-right:none;border-bottom:none;}
+.cover-corner.br{bottom:24px;right:24px;border-left:none;border-top:none;}
+.cover-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;}
+.logo-anim{opacity:0;animation:fadeUp 0.8s 0.3s forwards;}
+.name-anim{opacity:0;animation:fadeUp 0.8s 0.5s forwards;}
+.sub-anim{opacity:0;animation:fadeUp 0.8s 0.65s forwards;}
+.div-anim{opacity:0;animation:fadeUp 0.8s 0.8s forwards;}
+.title-anim{opacity:0;animation:fadeUp 0.8s 1s forwards;}
+.desc-anim{opacity:0;animation:fadeUp 0.8s 1.2s forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.c-name{font-family:'Arial Black',Arial,sans-serif;font-size:12px;letter-spacing:5px;color:rgba(255,255,255,0.45);text-transform:uppercase;text-align:center;margin-top:16px;margin-bottom:3px;}
+.c-llc{font-size:9px;letter-spacing:4px;color:rgba(212,43,43,0.8);text-align:center;text-transform:uppercase;}
+.c-div{width:44px;height:2px;background:#D42B2B;margin:24px auto;}
+.c-title{font-size:26px;font-weight:bold;color:#fff;text-align:center;line-height:1.4;max-width:340px;}
+.c-desc{font-size:11px;color:rgba(255,255,255,0.3);text-align:center;margin-top:12px;letter-spacing:1px;}
+.c-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;z-index:2;}
+.sdot{width:4px;height:4px;border-radius:50%;background:#D42B2B;animation:sp 2s infinite;}
+.sdot:nth-child(2){animation-delay:.25s;opacity:.5;}
+.sdot:nth-child(3){animation-delay:.5s;opacity:.25;}
+@keyframes sp{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* ABOUT */
+.page{min-height:100vh;padding:70px 40px;display:flex;flex-direction:column;justify-content:center;}
+.page-about{background:#fff;position:relative;overflow:hidden;}
+.page-about::after{content:'M';font-family:'Arial Black',Arial,sans-serif;font-size:300px;font-weight:900;color:rgba(212,43,43,0.04);position:absolute;right:-20px;top:50%;transform:translateY(-50%);pointer-events:none;line-height:1;}
+.sec-label{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#D42B2B;margin-bottom:16px;font-family:Arial,sans-serif;}
+.sec-title{font-size:34px;font-weight:bold;color:#18181A;line-height:1.2;margin-bottom:18px;max-width:460px;}
+.sec-body{font-size:14px;line-height:1.9;color:var(--muted);max-width:460px;margin-bottom:32px;font-family:Arial,sans-serif;}
+.dir-card{display:flex;align-items:center;gap:16px;background:#F5F5F5;border-left:3px solid #D42B2B;padding:14px 18px;max-width:360px;margin-bottom:32px;}
+.dir-av{width:44px;height:44px;background:#18181A;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Arial Black',Arial;font-size:14px;font-weight:900;color:#D42B2B;}
+.dir-name{font-size:14px;font-weight:bold;color:#18181A;font-family:Arial,sans-serif;}
+.dir-role{font-size:11px;color:var(--muted);margin-top:2px;font-family:Arial,sans-serif;}
+.stats{display:flex;gap:32px;flex-wrap:wrap;}
+.stat{border-left:2px solid #D42B2B;padding-left:12px;}
+.stat-n{font-size:32px;font-weight:bold;color:#18181A;line-height:1;}
+.stat-l{font-size:11px;color:var(--muted);margin-top:3px;font-family:Arial,sans-serif;}
+
+/* PRODUCTS */
+.page-prod{background:#18181A;}
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px;}
+.pcard{background:#242428;border:1px solid rgba(255,255,255,0.06);padding:20px 16px;transition:border-color .3s,transform .3s;}
+.pcard:hover{border-color:rgba(212,43,43,0.4);transform:translateY(-3px);}
+.pcard.hot{border-color:rgba(212,43,43,0.3);}
+.p-icon{font-size:20px;margin-bottom:12px;}
+.p-name{font-size:15px;font-weight:bold;color:#fff;margin-bottom:7px;font-family:Arial,sans-serif;}
+.p-desc{font-size:11px;line-height:1.7;color:rgba(255,255,255,0.38);font-family:Arial,sans-serif;}
+.p-tag{display:inline-block;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#D42B2B;margin-top:11px;padding:3px 7px;border:1px solid rgba(212,43,43,0.3);font-family:Arial,sans-serif;}
+
+/* CONTACT */
+.page-contact{background:#18181A;position:relative;overflow:hidden;}
+.page-contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(212,43,43,0.07) 0%,transparent 70%);}
+.ct-inner{position:relative;z-index:1;max-width:520px;margin:0 auto;text-align:center;}
+.ct-title{font-size:40px;font-weight:bold;color:#fff;margin:20px 0 10px;}
+.ct-sub{font-size:13px;color:rgba(255,255,255,0.32);line-height:1.7;margin-bottom:36px;font-family:Arial,sans-serif;}
+.ct-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:40px;}
+.ct-item{background:rgba(255,255,255,0.04);border:1px solid rgba(212,43,43,0.18);padding:13px 14px;}
+.ct-label{font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#D42B2B;margin-bottom:5px;font-family:Arial,sans-serif;}
+.ct-val{font-size:12px;color:rgba(255,255,255,0.6);font-family:Arial,sans-serif;word-break:break-all;}
+.footer{border-top:1px solid rgba(255,255,255,0.06);padding-top:18px;font-size:9px;color:rgba(255,255,255,0.18);letter-spacing:2px;text-transform:uppercase;font-family:Arial,sans-serif;}
+
+/* NAV */
+.nav{position:fixed;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:100;}
+.nd{width:5px;height:5px;border-radius:50%;background:rgba(212,43,43,0.2);cursor:pointer;transition:all .3s;}
+.nd.active{background:#D42B2B;transform:scale(1.5);}
+
+@media(max-width:600px){
+  .pgrid{grid-template-columns:1fr 1fr;}
+  .ct-grid{grid-template-columns:1fr;}
+  .page{padding:56px 22px;}
+  .sec-title{font-size:26px;}
+  .c-title{font-size:20px;}
+  .ct-title{font-size:30px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nd active" onclick="goTo(0)"></div>
+  <div class="nd" onclick="goTo(1)"></div>
+  <div class="nd" onclick="goTo(2)"></div>
+  <div class="nd" onclick="goTo(3)"></div>
+</nav>
+
+<!-- COVER -->
+<section id="p0" style="min-height:100vh;background-color:#18181A;background:#18181A;display:table;width:100%;position:relative;overflow:hidden;">
+  <div style="position:absolute;top:0;left:0;right:0;bottom:0;background-color:#18181A;background:#18181A;z-index:0;"></div>
+  <div style="position:absolute;top:24px;left:24px;width:130px;height:130px;border-top:1px solid rgba(212,43,43,0.3);border-left:1px solid rgba(212,43,43,0.3);z-index:1;"></div>
+  <div style="position:absolute;bottom:24px;right:24px;width:130px;height:130px;border-bottom:1px solid rgba(212,43,43,0.3);border-right:1px solid rgba(212,43,43,0.3);z-index:1;"></div>
+  <div style="display:table-cell;vertical-align:middle;text-align:center;padding:40px 20px;position:relative;z-index:2;">
+    <div class="logo-anim" style="margin-bottom:16px;">
+      <svg width="80" height="80" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="18" width="13" height="52" rx="2" fill="white"/>
+        <rect x="67" y="18" width="13" height="52" rx="2" fill="white"/>
+        <polygon points="8,18 21,18 44,52 67,18 80,18 44,65" fill="white"/>
+        <rect x="26" y="33" width="13" height="5" rx="1.5" fill="#D42B2B"/>
+        <rect x="49" y="33" width="13" height="5" rx="1.5" fill="#D42B2B"/>
+        <rect x="40" y="47" width="8" height="5" rx="1.5" fill="#D42B2B"/>
+      </svg>
+    </div>
+    <div style="font-family:Arial,sans-serif;font-size:12px;letter-spacing:5px;color:rgba(255,255,255,0.45);text-transform:uppercase;margin-bottom:4px;">Мармишболд</div>
+    <div style="font-family:Arial,sans-serif;font-size:9px;letter-spacing:4px;color:#D42B2B;text-transform:uppercase;margin-bottom:24px;">ХХК · LLC</div>
+    <div style="width:44px;height:2px;background:#D42B2B;margin:0 auto 24px;"></div>
+    <div style="font-family:Georgia,serif;font-size:24px;font-weight:bold;color:#ffffff;line-height:1.4;max-width:320px;margin:0 auto 12px;">Байгууллагын Гарын Бэлэг<br>& Бүтээгдэхүүний Каталог</div>
+    <div style="font-family:Arial,sans-serif;font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:1px;">Гадаад худалдаа · Чанартай бараа · Найдвартай нийлүүлэлт</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="page page-about" id="p1">
+  <div class="sec-label">Бидний тухай</div>
+  <h2 class="sec-title">Байгууллагын бэлгийг онцгой болгодог</h2>
+  <div class="dir-card">
+    <div class="dir-av">БН</div>
+    <div>
+      <div class="dir-name">Б. Нарантөгс</div>
+      <div class="dir-role">Гүйцэтгэх захирал · Мармишболд ХХК</div>
+    </div>
+  </div>
+  <p class="sec-body">Мармишболд ХХК нь гадаад худалдааны чиглэлээр үйл ажиллагаа явуулдаг бөгөөд байгууллагуудын захиалгаар гарын бэлэг болон хэрэгцээт бүтээгдэхүүнийг Хятад болон бусад улсаас өрсөлдөхүйц үнээр нийлүүлдэг.<br><br>Тухай бүрд нь хайж олж, чанарыг баталгаажуулан хүргэж өгдөг.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-n">50+</div><div class="stat-l">Байгууллага захиалагч</div></div>
+    <div class="stat"><div class="stat-n">100+</div><div class="stat-l">Бүтээгдэхүүний төрөл</div></div>
+    <div class="stat"><div class="stat-n">CN</div><div class="stat-l">Хятадаас шууд нийлүүлэлт</div></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="page page-prod" id="p2">
+  <div>
+    <div class="sec-label" style="color:#D42B2B">Бүтээгдэхүүн</div>
+    <h2 class="sec-title" style="color:#fff;font-size:30px;max-width:380px">Бид юу нийлүүлдэг вэ</h2>
+  </div>
+  <div class="pgrid">
+    <div class="pcard hot">
+      <div class="p-icon">🎁</div>
+      <div class="p-name">Байгууллагын бэлэг</div>
+      <div class="p-desc">Лого хэвлэлтэй аяга, үзэг, дэвтэр болон корпорат бэлгийн багц</div>
+      <span class="p-tag">Хамгийн их захиалагддаг</span>
+    </div>
+    <div class="pcard">
+      <div class="p-icon">🖊️</div>
+      <div class="p-name">Оффисын хэрэгсэл</div>
+      <div class="p-desc">Бичиг хэрэг, ширээний хэрэгсэл, хавтас, дэвтэр</div>
+      <span class="p-tag">Бөөний захиалга</span>
+    </div>
+    <div class="pcard">
+      <div class="p-icon">🔌</div>
+      <div class="p-name">Цахилгаан хэрэгсэл</div>
+      <div class="p-desc">Цэнэглэгч, утас, кабель, тоног төхөөрөмж</div>
+      <span class="p-tag">Шууд импорт</span>
+    </div>
+    <div class="pcard">
+      <div class="p-icon">🧰</div>
+      <div class="p-name">Тусгай захиалга</div>
+      <div class="p-desc">Таны байгууллагын онцлогт тохирсон дурын бүтээгдэхүүн</div>
+      <span class="p-tag">Тохируулга боломжтой</span>
+    </div>
+    <div class="pcard">
+      <div class="p-icon">📦</div>
+      <div class="p-name">Савлагаа & Брэнд</div>
+      <div class="p-desc">Лого бүхий тусгай савлагаа, бэлгийн хайрцаг</div>
+      <span class="p-tag">Лого хэвлэлттэй</span>
+    </div>
+    <div class="pcard">
+      <div class="p-icon">🚚</div>
+      <div class="p-name">Хүргэлт & Логистик</div>
+      <div class="p-desc">Хятадаас Монгол хүртэл тээвэрлэлтийг бүрэн зохицуулна</div>
+      <span class="p-tag">Хаалганаас хаалган</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="page page-contact" id="p3">
+  <div class="ct-inner">
+    <svg width="52" height="52" viewBox="0 0 88 88" fill="none">
+      <rect x="8" y="18" width="13" height="52" rx="2" fill="rgba(255,255,255,0.85)"/>
+      <rect x="67" y="18" width="13" height="52" rx="2" fill="rgba(255,255,255,0.85)"/>
+      <polygon points="8,18 21,18 44,52 67,18 80,18 44,65" fill="rgba(255,255,255,0.85)"/>
+      <rect x="26" y="33" width="13" height="5" rx="1.5" fill="#D42B2B"/>
+      <rect x="49" y="33" width="13" height="5" rx="1.5" fill="#D42B2B"/>
+      <rect x="40" y="47" width="8" height="5" rx="1.5" fill="#D42B2B"/>
+    </svg>
+    <div class="ct-title">Холбоо барих</div>
+    <p class="ct-sub">Захиалга өгөх, үнийн санал авах болон бусад асуулгыг<br>доорх мэдээллээр бидэнтэй холбогдоно уу.</p>
+    <div class="ct-grid">
+      <div class="ct-item">
+        <div class="ct-label">Утас</div>
+        <div class="ct-val">99140797</div>
+      </div>
+      <div class="ct-item">
+        <div class="ct-label">И-мэйл</div>
+        <div class="ct-val">Marmishbold@gmail.com</div>
+      </div>
+      <div class="ct-item">
+        <div class="ct-label">Захирал</div>
+        <div class="ct-val">Б. Нарантөгс</div>
+      </div>
+    </div>
+    <div class="footer">© 2026 Мармишболд ХХК · Marmishbold LLC · Бүх эрх хамгаалагдсан</div>
+  </div>
+</section>
+
+<script>
+const secs=document.querySelectorAll('[id^="p"]');
+const dots=document.querySelectorAll('.nd');
+function goTo(i){secs[i].scrollIntoView({behavior:'smooth'});}
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const i=parseInt(e.target.id.replace('p',''));
+      dots.forEach((d,j)=>d.classList.toggle('active',i===j));
+    }
+  });
+},{threshold:0.5});
+secs.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
